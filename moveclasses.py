@@ -20,4 +20,8 @@ class heal(move):
         super().__init__(name)
         self.eat = eat
         return f"{self.name}, {self.eat}"
+
+attack = []
+defend = []
+heal = []
         

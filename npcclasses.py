@@ -1,9 +1,8 @@
 class stats:
-    def __init__(self, attack, health):
-        self.attack = attack
-        self.health = health
-class user(stats):
-    def __init__(self, attack, health):
+    def __init__(self, name, attack, health):
+        self.name = name
         self.attack = attack
         self.health = health
 
+DoctorOctopus = stats("Doctor Octopus", "15", "125" )
+Electro = stats("Electro", "20", "150")
