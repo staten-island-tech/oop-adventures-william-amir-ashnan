@@ -1,27 +1,28 @@
-print(“ Welcome to the beginning of your journey. Your first opponent will be Doctor Octopus; he has a health level of 125 and attack damage of 15”) 
-Answer == input(“Are you ready to accept your first challenge?”)
-If answer = “yes”
- print(“Time to fight!”)
-If answer = “no”
-print(“You have lost the game”)
+import welcome
+print('Welcome to the beginning of your journey. Your first opponent will be Doctor Octopus; he has a health level of 125 and attack damage of 15')
 
-print(“Congrats on defeating Doctor Octopus! Time for the next opponent, Electro, he is slightly harder than Doctor Octopus. He has a health of 150 and attack damage of 20.”)
+answer = input('Are you ready to accept your first challenge?')
+if answer == 'yes':
+    print('Time to fight!')
 
-Answer == input(“Are you ready to accept your second challenge?”)
+else:
+     print('You have lost the game')
+     exit() 
 
-If answer == “yes”
-print(“Time to fight!”)
+answer == input('Congrats on defeating Doctor Octopus! Time for the next opponent, Electro, he is slightly harder than Doctor Octopus. He has a health of 150 and attack damage of 20. Are you ready to accept your second challenge?')
+if answer == 'yes':
+    print('Time to fight!')
 
-If answer = “no”
-print(“You have lost the game”)
+else:
+     print('You have lost the game')
+     exit() 
 
-print(“Congrats on defeating Electro! Time for the next opponent, Mysterio, he is slightly harder than Electro. He has a health of 175 and attack damage of 25.”)
+print('Congrats on defeating Electro! Time for the next opponent, Mysterio, he is slightly harder than Electro. He has a health of 175 and attack damage of 25.')
 
-Answer == input(“Are you ready to accept your third challenge?”)
+answer == input('Are you ready to accept your third challenge?')
+if answer == 'yes':
+    print('Time to fight!')
 
-If answer == “yes”
-print(“Time to fight!”)
-
-If answer = “no”
-print(“You have lost the game”)
-
+else:
+     print('You have lost the game')
+     exit() 
