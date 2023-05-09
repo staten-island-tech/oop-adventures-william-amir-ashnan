@@ -5,7 +5,7 @@ answer = input('Are you ready to accept your first challenge?')
 if answer == 'yes':
     print('Time to fight!')
 
-if answer == 'no':
+else:
      print('You have lost the game')
      exit() 
 
@@ -13,7 +13,7 @@ answer == input('Congrats on defeating Doctor Octopus! Time for the next opponen
 if answer == 'yes':
     print('Time to fight!')
 
-if answer == 'no':
+else:
      print('You have lost the game')
      exit() 
 
@@ -23,6 +23,6 @@ answer == input('Are you ready to accept your third challenge?')
 if answer == 'yes':
     print('Time to fight!')
 
-if answer == 'no':
+else:
      print('You have lost the game')
      exit() 
