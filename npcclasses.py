@@ -6,3 +6,5 @@ class stats:
 
 DoctorOctopus = stats("Doctor Octopus", "15", "125" )
 Electro = stats("Electro", "20", "150")
+Mysterio = stats("Mysterio", "25", "175")
+GreenGoblin = stats("Green Goblin", "40", "175")
