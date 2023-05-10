@@ -1,4 +1,4 @@
-print("Welcome to the beginning of your journey. Your first opponent will be Doctor Octopus; he has a health level of 125 and attack damage of 15.”)"
+print("Welcome to the beginning of your journey. Your first opponent will be Doctor Octopus; he has a health level of 125 and attack damage of 15)"
 Answer == input(“Are you ready to accept your first challenge?”)
 If answer = “yes”
  print(“Time to fight!”)
