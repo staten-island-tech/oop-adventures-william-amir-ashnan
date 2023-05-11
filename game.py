@@ -1,7 +1,6 @@
 import moveclasses 
 import npcclasses 
 
-
 class Game:
     def __init__(self):
         self.game_over = False
@@ -25,22 +24,22 @@ class Game:
 
 
     def display_result(self, player, opponent):
-            print(f"{player.name} used a {player.weapon.name}, {opponent.name} used a {opponent.shield.name} Shield\n")
+            print(f"{player.name} used a {player.attack.name}, {opponent.name} used a {opponent.defend.name} Shield\n")
             print(f"{player.name} caused damage to {opponent.name}\n")
 
     def take_turn(self, player, opponent):
 
-        if player.weapon not in opponent.shield.blocks:
+        if player.weapon not in opponent.defend.blocks:
             opponent.damage()
             current_game.display_result(player, opponent)
         else:
-            print(f"{player.name} used a {player.weapon.name}, {opponent.name} used a {opponent.shield.name} Shield\n")
+            print(f"{player.name} used a {player.attack.name}, {opponent.name} used a {opponent.defend.name} Shield\n")
             print(f"{opponent.name} blocked {player.name}'s attack - No Damage")
 
 # Setup Game Objects
 current_game = Game()
-human = Player("Mark")
-ai = AiPlayer("Computer")
+human = player("Mark")
+ai = NPC("Computer")
 
 players = [human, ai]
 
