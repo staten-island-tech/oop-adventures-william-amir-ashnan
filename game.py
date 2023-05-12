@@ -1,5 +1,5 @@
-import moveclasses 
-import npcclasses 
+from moveclasses import move, attack, defend, heal
+from npcclasses import player, NPC 
 
 class Game:
     def __init__(self):
@@ -11,11 +11,11 @@ class Game:
         print(f"\n***   Round: {self.round}   ***\n")  
 
     # Check if either or both Players is below zero health
-    def check_win(self, player, opponent):
-        if player.health < 1 and opponent.health > 0:
+    def check_win(self, player, NPC):
+        if player.health < 1 and NPC.health > 0:
             self.game_over = True
             print("You Lose")
-        elif opponent.health < 1 and player.health > 0:
+        elif NPC.health < 1 and player.health > 0:
             self.game_over = True
             print("You Win")
         elif player.health < 1 and ai.health < 1:
@@ -23,31 +23,28 @@ class Game:
             print("*** Draw ***")
 
 
-    def display_result(self, player, opponent):
-            print(f"{player.name} used a {player.attack.name}, {opponent.name} used a {opponent.defend.name} Shield\n")
-            print(f"{player.name} caused damage to {opponent.name}\n")
+    def display_result(self, player, NPC):
+            print(f"{player.name} used a {player.attack.name}, {NPC.name} used a {NPC.defend.name} Shield\n")
+            print(f"{player.name} caused damage to {NPC.name}\n")
 
-    def take_turn(self, player, opponent):
+    def take_turn(self, player, NPC):
 
-        if player.weapon not in opponent.defend.blocks:
-            opponent.damage()
-            current_game.display_result(player, opponent)
+        if player.weapon not in NPC.defend.blocks:
+            NPC.damage()
+            current_game.display_result(player, NPC)
         else:
-            print(f"{player.name} used a {player.attack.name}, {opponent.name} used a {opponent.defend.name} Shield\n")
-            print(f"{opponent.name} blocked {player.name}'s attack - No Damage")
+            print(f"{player.name} used a {player.attack.name}, {NPC.name} used a {NPC.defend.name} Shield\n")
+            print(f"{NPC.name} blocked {player.name}'s attack - No Damage")
 
 # Setup Game Objects
 current_game = Game()
-human = player("Mark")
+human = player("You")
 ai = NPC("Computer")
 
 players = [human, ai]
 
 # Main Game Loop
 while not current_game.game_over:
-    for player in players:
-        player.select_weapon()
-        player.select_shield()
     current_game.new_round()
     current_game.take_turn(human, ai)
     current_game.take_turn(ai, human)

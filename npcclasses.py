@@ -18,4 +18,4 @@ Electro = NPC("Electro", "20", "150")
 Mysterio = NPC("Mysterio", "25", "175")
 GreenGoblin = NPC("Green Goblin", "40", "175")
 
-print(NPC)
+print(DoctorOctopus.health)
