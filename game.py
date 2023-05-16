@@ -1,53 +1,50 @@
-from moveclasses import move, attack, defend, heal
-from npcclasses import player, NPC 
+from npcclasses import SpiderMan, DoctorOctopus, Electro, Mysterio, GreenGoblin
+def prefight(hero, enemy): 
+    print(f"{hero.name} vs {enemy.name}") 
+    print(f"{hero.name} - Health: {hero.health} Attack: {hero.attack}") 
+    print(f"{enemy.name} - Health: {enemy.health} Attack: {enemy.attack}")
 
-class Game:
-    def __init__(self):
-        self.game_over = False
-        self.round = 0
+def fight(hero, enemy):
+    while hero.alive() and enemy.alive():
+        # Hero attacks first
+        hero.attack_enemy(enemy)
+        print(f"Your health = {hero.health} {enemy.name} health = {enemy.health}")
+        if not enemy.alive():
+            break
+            
+        # Enemy attacks
+        enemy.attack_enemy(hero)
+        if not hero.alive():
+            break
+            
+    if hero.alive():
+        print(f"{hero.name} defeated {enemy.name}!")
+        return True
+    else:
+        print(f"{hero.name} was defeated by {enemy.name}. Game over!")
+        return False
 
-    def new_round(self):
-        self.round += 1
-        print(f"\n***   Round: {self.round}   ***\n")  
-
-    # Check if either or both Players is below zero health
-    def check_win(self, player, NPC):
-        if player.health < 1 and NPC.health > 0:
-            self.game_over = True
-            print("You Lose")
-        elif NPC.health < 1 and player.health > 0:
-            self.game_over = True
-            print("You Win")
-        elif player.health < 1 and ai.health < 1:
-            self.game_over = True
-            print("*** Draw ***")
-
-
-    def display_result(self, player, NPC):
-            print(f"{player.name} used a {player.attack.name}, {NPC.name} used a {NPC.defend.name} Shield\n")
-            print(f"{player.name} caused damage to {NPC.name}\n")
-
-    def take_turn(self, player, NPC):
-
-        if player.weapon not in NPC.defend.blocks:
-            NPC.damage()
-            current_game.display_result(player, NPC)
+def main():
+    hero = SpiderMan("Spider-Man", 30, 150, 25)
+    enemies = [DoctorOctopus(), Electro(), Mysterio(), GreenGoblin()]
+    
+    print("Welcome to Queens! Your mission is to defeat all the enemies and save the city.")
+    
+    for enemy in enemies:
+        print(f"You have encountered {enemy.name}. Get ready to fight!")
+        answer = input("Are you ready to accept the challenge? (yes or no) ")
+        if answer.lower() == "yes":
+            prefight(hero, enemy)
+            fight(hero, enemy)
+            if not hero.alive():
+                break
         else:
-            print(f"{player.name} used a {player.attack.name}, {NPC.name} used a {NPC.defend.name} Shield\n")
-            print(f"{NPC.name} blocked {player.name}'s attack - No Damage")
+            print("You have lost the game.")
+            break
+            
+    if hero.alive():
+        print("Congratulations! You have saved Queens from the Green Goblin's reign of terror!")
+        
+if __name__ == "__main__":
+    main()
 
-# Setup Game Objects
-current_game = Game()
-human = player("You")
-ai = NPC("Computer")
-
-players = [human, ai]
-
-# Main Game Loop
-while not current_game.game_over:
-    current_game.new_round()
-    current_game.take_turn(human, ai)
-    current_game.take_turn(ai, human)
-    print(f"{human.name}'s health = {human.health}")
-    print(f"{ai.name}'s health = {ai.health}")
-    current_game.check_win(human, ai)
