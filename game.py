@@ -6,6 +6,9 @@ class Character:
         self.health = health
         self.defend = defend
 
+    def block(self):
+        self.defend.blocks = {self.attack}
+
     def alive(self):
         return self.health > 0
         
@@ -22,29 +25,24 @@ class Hero(Character):
         self.health += self.heal
         print(f"{self.name} ate a slice of pizza and regained {self.heal} health.")
         
-    def power_up(self):
-        self.attack = 40
-        self.health = 175
-        print(f"{self.name} powered up and increased their attack to {self.attack} and health to {self.health}.")
-        
 class Enemy(Character):
     pass
 
 class DoctorOctopus(Enemy):
     def __init__(self):
-        super().__init__("Doctor Octopus", random.randint(10,20), 125)
+        super().__init__("Doctor Octopus", random.randint(10,20), 1000, 125)
         
 class Electro(Enemy):
     def __init__(self):
-        super().__init__("Electro", random.randint(20,25), 150)
+        super().__init__("Electro", random.randint(20,25), 1000, 150)
         
 class Mysterio(Enemy):
     def __init__(self):
-        super().__init__("Mysterio", random.randint(25,30), 175)
+        super().__init__("Mysterio", random.randint(25,30), 1000, 175)
 
 class GreenGoblin(Enemy):
     def __init__(self):
-        super().__init__("Green Goblin", random.randint(30,40), 200)
+        super().__init__("Green Goblin", random.randint(30,40), 1000, 200)
 
 class Game:
     def __init__(self):
@@ -63,7 +61,10 @@ def prefight(hero, enemy):
 
 def fight(hero, enemy):
     while hero.alive() and enemy.alive():
-        hero.attack_enemy(enemy)
+        choice = input("Attack, Defend, Heal")
+        if choice == "Attack":
+            hero.attack_enemy(enemy)
+            print(f"{hero.name} - Health: {hero.health}             {enemy.name} - Health: {enemy.health}")
         if not enemy.alive():
             break
             
@@ -81,7 +82,7 @@ def fight(hero, enemy):
 games = Game()
 
 def main():
-    hero = Hero("Spider-Man", 30, 10000, 25)
+    hero = Hero("Spider-Man", 30, 10000,25, 1000)
     enemies = [DoctorOctopus(), Electro(), Mysterio(), GreenGoblin()]
     
     print("Welcome to Queens! Your mission is to defeat all the enemies and save the city.")
