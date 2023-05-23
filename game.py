@@ -7,7 +7,7 @@ class Character:
         self.defend = defend
 
     def block(self):
-        self.defend.blocks = {self.attack}
+        self.defend -= self.attack
 
     def alive(self):
         return self.health > 0
@@ -62,13 +62,20 @@ def prefight(hero, enemy):
 def fight(hero, enemy):
     while hero.alive() and enemy.alive():
         choice = input("Attack, Defend, Heal")
+        if choice == "quit":
+            break
+        if choice == "Defend":
+            hero.block()
+        if choice == "Heal":
+            hero.pizza()
         if choice == "Attack":
             hero.attack_enemy(enemy)
-            print(f"{hero.name} - Health: {hero.health}             {enemy.name} - Health: {enemy.health}")
         if not enemy.alive():
             break
-            
+    
         enemy.attack_enemy(hero)
+        print(f"{hero.name} - Health: {hero.health}")
+        print(f"{enemy.name} - Health: {enemy.health}")
         if not hero.alive():
             break
             
@@ -82,7 +89,7 @@ def fight(hero, enemy):
 games = Game()
 
 def main():
-    hero = Hero("Spider-Man", 30, 10000,25, 1000)
+    hero = Hero("Spider-Man", 30, 10000,1000, 1000)
     enemies = [DoctorOctopus(), Electro(), Mysterio(), GreenGoblin()]
     
     print("Welcome to Queens! Your mission is to defeat all the enemies and save the city.")
