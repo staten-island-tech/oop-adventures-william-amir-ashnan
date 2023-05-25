@@ -1,14 +1,14 @@
 import random
 class Character:
-    def __init__(self, name, attack, defend, health):
+    def __init__(self, name, attack, health):
         self.name = name
         self.attack = attack
         self.health = health
-        self.defend = defend
 
-    def block(self):
-        self.defend -= self.attack
-
+    def block(self, enemy):
+        self.health += enemy.attack
+        print(f"{self.name} blocked {enemy.name} for {enemy.attack} damage")
+    
     def alive(self):
         return self.health > 0
         
@@ -17,8 +17,8 @@ class Character:
         print(f"{self.name} attacked {enemy.name} for {self.attack} damage.")
         
 class Hero(Character):
-    def __init__(self, name, attack, health, block, heal):
-        super().__init__(name, attack, block, health)
+    def __init__(self, name, attack, health, heal):
+        super().__init__(name, attack, health)
         self.heal = heal
         
     def pizza(self):
@@ -30,19 +30,19 @@ class Enemy(Character):
 
 class DoctorOctopus(Enemy):
     def __init__(self):
-        super().__init__("Doctor Octopus", random.randint(10,20), 1000, 125)
+        super().__init__("Doctor Octopus", random.randint(10,20), 125)
         
 class Electro(Enemy):
     def __init__(self):
-        super().__init__("Electro", random.randint(20,25), 1000, 150)
+        super().__init__("Electro", random.randint(20,25),150)
         
 class Mysterio(Enemy):
     def __init__(self):
-        super().__init__("Mysterio", random.randint(25,30), 1000, 175)
+        super().__init__("Mysterio", random.randint(25,30), 175)
 
 class GreenGoblin(Enemy):
     def __init__(self):
-        super().__init__("Green Goblin", random.randint(30,40), 1000, 200)
+        super().__init__("Green Goblin", random.randint(30,40), 200)
 
 class Game:
     def __init__(self):
@@ -65,7 +65,7 @@ def fight(hero, enemy):
         if choice == "quit":
             break
         if choice == "Defend":
-            hero.block()
+            hero.block(enemy)
         if choice == "Heal":
             hero.pizza()
         if choice == "Attack":
@@ -89,7 +89,7 @@ def fight(hero, enemy):
 games = Game()
 
 def main():
-    hero = Hero("Spider-Man", 30, 10000,1000, 1000)
+    hero = Hero("Spider-Man", 30, 10000, 1000)
     enemies = [DoctorOctopus(), Electro(), Mysterio(), GreenGoblin()]
     
     print("Welcome to Queens! Your mission is to defeat all the enemies and save the city.")
