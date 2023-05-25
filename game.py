@@ -1,59 +1,8 @@
 import random
-class Character:
-    def __init__(self, name, attack, health):
-        self.name = name
-        self.attack = attack
-        self.health = health
-
-    def block(self, enemy):
-        self.health += enemy.attack
-        print(f"{self.name} blocked {enemy.name} for {enemy.attack} damage")
-    
-    def alive(self):
-        return self.health > 0
-        
-    def attack_enemy(self, enemy):
-        enemy.health -= self.attack
-        print(f"{self.name} attacked {enemy.name} for {self.attack} damage.")
-        
-class Hero(Character):
-    def __init__(self, name, attack, health, heal):
-        super().__init__(name, attack, health)
-        self.heal = heal
-        
-    def pizza(self):
-        self.health += self.heal
-        print(f"{self.name} ate a slice of pizza and regained {self.heal} health.")
-        
-class Enemy(Character):
-    pass
-
-class DoctorOctopus(Enemy):
-    def __init__(self):
-        super().__init__("Doctor Octopus", random.randint(10,20), 125)
-        
-class Electro(Enemy):
-    def __init__(self):
-        super().__init__("Electro", random.randint(20,25),150)
-        
-class Mysterio(Enemy):
-    def __init__(self):
-        super().__init__("Mysterio", random.randint(25,30), 175)
-
-class GreenGoblin(Enemy):
-    def __init__(self):
-        super().__init__("Green Goblin", random.randint(30,40), 200)
-
-class Game:
-    def __init__(self):
-        self.game_over = False
-        self.round = 0
-
-    def new_round(self):
-        self.round += 1
-        print(f"\n***   Round: {self.round}   ***\n")  
-
-
+import welcome
+from classes import Character, Hero, Enemy, Game, DoctorOctopus, Electro, Mysterio, GreenGoblin
+Character()
+Enemy()
 def prefight(hero, enemy): 
     print(f"{hero.name} vs {enemy.name}") 
     print(f"{hero.name} - Health: {hero.health} Attack: {hero.attack}") 
@@ -92,7 +41,7 @@ def main():
     hero = Hero("Spider-Man", 30, 10000, 1000)
     enemies = [DoctorOctopus(), Electro(), Mysterio(), GreenGoblin()]
     
-    print("Welcome to Queens! Your mission is to defeat all the enemies and save the city.")
+    print(welcome)
     
     for enemy in enemies:
         print(f"You have encountered {enemy.name}. Get ready to fight!")
