@@ -20,6 +20,9 @@ class Hero(Character):
     def __init__(self, name, attack, health, heal):
         super().__init__(name, attack, health)
         self.heal = heal
+    
+    def quit(self):
+        self.health -= self.health
         
     def pizza(self):
         self.health += self.heal
@@ -47,10 +50,10 @@ class GreenGoblin(Enemy):
 class Game:
     def __init__(self):
         self.game_over = False
-        self.round = 0
+        self.challenge = 0
 
     def new_round(self):
-        self.round += 1
-        print(f"\n***   Round: {self.round}   ***\n")  
+        self.challenge += 1
+        print(f"\n***   Enemy: {self.challenge}   ***\n")  
 
 

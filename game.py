@@ -28,11 +28,9 @@ def fight(hero, enemy):
             break
             
     if hero.alive():
-        print(f"{hero.name} defeated {enemy.name}!")
-        return True
+        print(f"{hero.name} defeated {enemy.name}!")   
     else:
-        print(f"{hero.name} was defeated by {enemy.name}. Game over!")
-        return False
+        print(f"{hero.name} was defeated by {enemy.name}. Game over!") 
 
 games = Game()
 
@@ -52,12 +50,12 @@ def main():
             print(f"Your health = {hero.health} {enemy.name} health = {enemy.health}")
             if not hero.alive():
                 break
-        else:
+        if answer.lower() == "no":
+            hero.quit()
             print("You have lost the game.")
             break
             
     if hero.alive():
         print("Congratulations! You have saved Queens from the Villians reign of terror!")
-if __name__ == "__main__":
-    main()
+main()
 
