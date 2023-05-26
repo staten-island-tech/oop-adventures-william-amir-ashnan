@@ -1,8 +1,7 @@
 import random
 import welcome
-from classes import Character, Hero, Enemy, Game, DoctorOctopus, Electro, Mysterio, GreenGoblin
-Character()
-Enemy()
+from classes import Hero, Game, DoctorOctopus, Electro, Mysterio, GreenGoblin
+
 def prefight(hero, enemy): 
     print(f"{hero.name} vs {enemy.name}") 
     print(f"{hero.name} - Health: {hero.health} Attack: {hero.attack}") 
