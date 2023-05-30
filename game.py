@@ -1,6 +1,6 @@
 import random
 import welcome
-from classes import Hero, Game, DoctorOctopus, Electro, Mysterio, GreenGoblin
+from classes import Hero, Tutorialbot, DoctorOctopus, Electro, Mysterio, GreenGoblin
 
 def prefight(hero, enemy): 
     print(f"{hero.name} vs {enemy.name}") 
@@ -32,10 +32,26 @@ def fight(hero, enemy):
     else:
         print(f"{hero.name} was defeated by {enemy.name}. Game over!") 
 
-games = Game()
+def Tutorial():
+    hero= Hero("Test-Man",random.randint(20,30), 200, 50)
+    enemy= Tutorialbot()
+    for enemy in enemy:
+        print(f"You have encountered {enemy.name}. Get ready to fight!")
+        answer = input("Are you ready to accept the challenge? (yes or no) ")
+        if answer.lower() == "yes":
+            print(f"\n***   Enemy: {enemy.name}   ***\n")  
+            prefight(hero, enemy)
+            fight(hero, enemy)
+            print(f"Your health = {hero.health} {enemy.name} health = {enemy.health}")
+            if not hero.alive():
+                break
+        if answer.lower() == "no":
+            hero.quit()
+            print("You have lost the game.")
+            break
 
 def main():
-    hero = Hero("Spider-Man", 30, 10000, 1000)
+    hero = Hero("Spider-Man",random.randint(25,35), 10000, 1000)
     enemies = [DoctorOctopus(), Electro(), Mysterio(), GreenGoblin()]
     
     print(welcome)
@@ -44,7 +60,7 @@ def main():
         print(f"You have encountered {enemy.name}. Get ready to fight!")
         answer = input("Are you ready to accept the challenge? (yes or no) ")
         if answer.lower() == "yes":
-            games.new_round()
+            print(f"\n***   Enemy: {enemy.name}   ***\n")  
             prefight(hero, enemy)
             fight(hero, enemy)
             print(f"Your health = {hero.health} {enemy.name} health = {enemy.health}")
@@ -57,5 +73,7 @@ def main():
             
     if hero.alive():
         print("Congratulations! You have saved Queens from the Villians reign of terror!")
+        print("Game made by William Wu, Amirjon Kholmatov, and Ashnan Kirithararasan")
+Tutorial()
 main()
 

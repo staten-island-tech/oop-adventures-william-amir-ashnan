@@ -29,7 +29,12 @@ class Hero(Character):
         print(f"{self.name} ate a slice of pizza and regained {self.heal} health.")
         
 class Enemy(Character):
-    pass
+    def __init__(self, name, attack, health):
+        super().__init__(name, attack, health)
+
+class Tutorialbot(Enemy):
+    def __init__(self):
+        super().__init__("Tutorial Bot", random.randint(10,15), 100)
 
 class DoctorOctopus(Enemy):
     def __init__(self):
@@ -47,13 +52,6 @@ class GreenGoblin(Enemy):
     def __init__(self):
         super().__init__("Green Goblin", random.randint(30,40), 200)
 
-class Game:
-    def __init__(self):
-        self.game_over = False
-        self.challenge = 0
-
-    def new_round(self):
-        self.challenge += 1
-        print(f"\n***   Enemy: {self.challenge}   ***\n")  
+ 
 
 
