@@ -38,8 +38,8 @@ def Tutorial():
     hero= Hero("Test-Man",random.randint(20,30), 200, 50)
     enemie= [Tutorialbot()]
     for enemy in enemie:
-        print(f"You have encountered {enemy.name}. Get ready to fight!")
-        answer = input("Are you ready to accept the challenge? (yes or no) ")
+        print(f"You have encountered {enemy.name}. Get ready to battle!")
+        answer = input("Are you ready to accept your next challenge? (yes or no) ")
         if answer.lower() == "yes":
             print(f"***   Enemy: {enemy.name}   ***")  
             prefight(hero, enemy)
@@ -57,8 +57,8 @@ def main():
     enemies = [DoctorOctopus(), Electro(), Mysterio(), GreenGoblin()]
     
     for enemy in enemies:
-        print(f"You have encountered {enemy.name}. Get ready to fight!")
-        answer = input("Are you ready to accept the challenge? (yes or no) ")
+        print(f"You have encountered {enemy.name}. Get ready to battle!")
+        answer = input("Are you ready to accept your next challenge? (yes or no) ")
         if answer.lower() == "yes":
             print(f"***   Enemy: {enemy.name}   ***")  
             prefight(hero, enemy)
@@ -68,11 +68,11 @@ def main():
                 break
         if answer.lower() == "no":
             hero.quit()
-            print("You have lost the game.")
+            print("Sorry but you have lost the game.")
             break
             
     if hero.alive():
-        print("Congratulations! You have saved Queens from the Villians reign of terror!")
-        print("Game made by William Wu, Amirjon Kholmatov, and Ashnan Kirithararasan")
+        print("Congratulations! You have saved Queens from the villians reign of terror!")
+        print("Game created by William Wu, Amirjon Kholmatov, and Ashnan Kirithararasan.")
 
 
