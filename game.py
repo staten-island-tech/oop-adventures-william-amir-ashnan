@@ -95,8 +95,8 @@ def main():
     print("Welcome to Queens! Your mission is to defeat all the enemies and save the city.")
     
     for enemy in enemies:
-        print(f"You have encountered {enemy.name}. Get ready to fight!")
-        answer = input("Are you ready to accept the challenge? (yes or no) ")
+        print(f"You have encountered {enemy.name}. Get ready to battle!")
+        answer = input("Are you ready to accept your next challenge? (yes or no) ")
         if answer.lower() == "yes":
             games.new_round()
             prefight(hero, enemy)
@@ -109,7 +109,7 @@ def main():
             break
             
     if hero.alive():
-        print("Congratulations! You have saved Queens from the Villians reign of terror!")
+        print("Congratulations! You have saved Queens from the villians reign of terror!")
 if __name__ == "__main__":
     main()
 
