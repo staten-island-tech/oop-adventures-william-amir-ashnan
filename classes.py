@@ -32,26 +32,13 @@ class Enemy(Character):
     def __init__(self, name, attack, health):
         super().__init__(name, attack, health)
 
-class Tutorialbot(Enemy):
-    def __init__(self):
-        super().__init__("Tutorial Bot", random.randint(10,15), 100)
+Tutorialbot = Enemy("Tutorial Bot", random.randint(10,15), 100)
 
-class DoctorOctopus(Enemy):
-    def __init__(self):
-        super().__init__("Doctor Octopus", random.randint(10,20), 125)
+DoctorOctopus = Enemy("Doctor Octopus", random.randint(10,20), 125)
         
-class Electro(Enemy):
-    def __init__(self):
-        super().__init__("Electro", random.randint(20,25),150)
+Electro = Enemy("Electro", random.randint(20,25),150)
         
-class Mysterio(Enemy):
-    def __init__(self):
-        super().__init__("Mysterio", random.randint(25,30), 175)
+Mysterio= Enemy("Mysterio", random.randint(25,30), 175)
 
-class GreenGoblin(Enemy):
-    def __init__(self):
-        super().__init__("Green Goblin", random.randint(30,40), 200)
-
- 
-
+GreenGoblin = Enemy("Green Goblin", random.randint(30,40), 200)
 
