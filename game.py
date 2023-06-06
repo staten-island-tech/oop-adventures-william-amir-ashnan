@@ -105,7 +105,7 @@ def main():
             if not hero.alive():
                 break
         else:
-            print("You have lost the game.")
+            print("Sorry, you have lost the game.")
             break
             
     if hero.alive():
