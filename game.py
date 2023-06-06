@@ -32,7 +32,7 @@ class DoctorOctopus(Enemy):
     def __init__(self):
         super().__init__("Doctor Octopus", random.randint(10,20), 125)
         
-class Electro(Enemy):
+class Electro(Enemy):     
     def __init__(self):
         super().__init__("Electro", random.randint(20,25),150)
         
